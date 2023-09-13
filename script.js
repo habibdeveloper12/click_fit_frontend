@@ -218,7 +218,6 @@ $("#image-dropzone").on("click", function () {
   $("#file-input").click();
 });
 
-// Input field for file selection
 $('<input type="file" id="file-input" style="display:none;">')
   .appendTo("#image-dropzone")
   .on("change", function () {
@@ -229,18 +228,15 @@ $("#open-popup").click(function () {
   $("#file-upload-popup").css("display", "block");
 });
 
-// Initialize Dropzone.js
 Dropzone.options.myDropzone = {
   url: "http://localhost:3000/upload",
-  paramName: "file", // The name that will be used for the uploaded file(s)
-  maxFilesize: 100, // Set the maximum file size in MB
-  acceptedFiles: "image/*,video/*", // Allow both image and video files
+  paramName: "file",
+  maxFilesize: 100,
+  acceptedFiles: "image/*,video/*",
   init: function () {
     this.on("success", function (file, response) {
-      // Handle the server response on successful upload
       toastr.success("File uploaded successfully");
 
-      // Display a success message in the popup
       $("#upload-status").html(
         '<p class="success-message">File uploaded successfully</p>'
       );
